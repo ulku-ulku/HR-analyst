@@ -1,0 +1,104 @@
+<!doctype html>
+<html lang="tr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>HR Nexus - Doğru İşe Doğru Yetkinlik</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <header class="hero">
+      <div>
+        <p class="eyebrow">HR Sosyal Ağı</p>
+        <h1>Doğru işe, doğru yetkinlikte insanı bağlayan platform</h1>
+        <p>
+          HR Nexus; adayların CV hazırlama desteği almasını, işe uygunluk skorunu görmesini
+          ve işe alım sürecinin şeffaf şekilde yönetilmesini sağlar.
+        </p>
+      </div>
+      <div class="hero-card">
+        <h3>Platform Etkisi</h3>
+        <ul>
+          <li>📌 CV oluşturma rehberi</li>
+          <li>📌 Yetkinlik bazlı iş eşleştirme</li>
+          <li>📌 Şeffaf işe alım pipeline'ı</li>
+        </ul>
+      </div>
+    </header>
+
+    <main>
+      <section class="panel two-col">
+        <div>
+          <h2>Aday Profili Oluştur</h2>
+          <form id="candidate-form" class="stack">
+            <label>Ad Soyad<input name="name" required /></label>
+            <label>Hedef Rol<input name="role" placeholder="Örn: Frontend Developer" required /></label>
+            <label>Deneyim (yıl)<input name="experience" type="number" min="0" value="1" /></label>
+            <label>Teknik Yetkinlikler (virgülle)
+              <textarea name="skills" rows="3" placeholder="React, TypeScript, UI/UX"></textarea>
+            </label>
+            <label>Sosyal Yetkinlikler (virgülle)
+              <textarea name="softSkills" rows="2" placeholder="İletişim, Takım Çalışması"></textarea>
+            </label>
+            <button type="submit">Adayı Kaydet</button>
+          </form>
+        </div>
+        <div>
+          <h2>CV Asistanı</h2>
+          <form id="cv-form" class="stack">
+            <label>Profesyonel Özet
+              <textarea name="summary" rows="4" required></textarea>
+            </label>
+            <label>Son Proje / Başarı
+              <textarea name="achievement" rows="3" required></textarea>
+            </label>
+            <label>Sertifikalar
+              <input name="certifications" placeholder="Örn: Google Data Analytics" />
+            </label>
+            <button type="submit">CV Taslağı Üret</button>
+          </form>
+          <pre id="cv-output">CV taslağı burada görünecek...</pre>
+        </div>
+      </section>
+
+      <section class="panel two-col">
+        <div>
+          <h2>İlan Oluştur</h2>
+          <form id="job-form" class="stack">
+            <label>Pozisyon<input name="title" required /></label>
+            <label>Min. Deneyim (yıl)<input name="minExperience" type="number" min="0" value="2" /></label>
+            <label>Gerekli Yetkinlikler (virgülle)
+              <textarea name="requiredSkills" rows="3" required></textarea>
+            </label>
+            <label>Öncelikli Sosyal Yetkinlikler (virgülle)
+              <textarea name="requiredSoftSkills" rows="2"></textarea>
+            </label>
+            <button type="submit">İlanı Yayınla</button>
+          </form>
+        </div>
+        <div>
+          <h2>Yetkinlik Eşleşme Motoru</h2>
+          <div class="stack">
+            <label>Aday Seç
+              <select id="candidate-select"></select>
+            </label>
+            <label>İlan Seç
+              <select id="job-select"></select>
+            </label>
+            <button id="match-btn" type="button">Eşleşmeyi Hesapla</button>
+          </div>
+          <div id="match-output" class="result"></div>
+          <p id="status-output" class="status">Backend bağlantısı bekleniyor...</p>
+        </div>
+      </section>
+
+      <section class="panel">
+        <h2>İşe Alım Süreci Takibi</h2>
+        <p>Adayları aşamalar arasında taşıyarak süreci şeffaflaştırın.</p>
+        <div id="pipeline" class="pipeline"></div>
+      </section>
+    </main>
+
+    <script src="app.js"></script>
+  </body>
+</html>
