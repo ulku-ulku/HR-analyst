@@ -110,3 +110,14 @@ pre {
 }
 
 small { color: #4b5563; }
+
+
+.status {
+  margin-top: .65rem;
+  font-size: .92rem;
+  color: #1d4ed8;
+}
+
+.status.error {
+  color: #b91c1c;
+}

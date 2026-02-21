@@ -1,44 +1,45 @@
-# HR Nexus MVP
+# HR Nexus (Backend + Frontend)
 
-Bu proje, aşağıdaki işe alım problemlerine çözüm üretmek için hazırlanmış bir MVP'dir:
+Bu proje, işe alımda yaşanan üç temel soruna backend destekli bir uygulama ile çözüm sunar:
 
-- Doğru işe, doğru yetkinlikte insanı bulamama
-- Adayların CV hazırlama konusunda zorlanması
-- İşe alım sürecinin dağınık ve sağlıksız ilerlemesi
+- Doğru işe doğru yetkinlikte insanın yerleşememesi
+- Adayların etkili CV hazırlayamaması
+- İşe alım sürecinin dağınık ve izlenemez ilerlemesi
 
-## Özellikler
+## Neler Var?
 
-1. **Aday Profili Oluşturma**
-   - Teknik ve sosyal yetkinlikleri girme
-   - Deneyim yılı ve hedef rolü kaydetme
-
-2. **CV Asistanı**
-   - Aday bilgilerini kullanarak hızlı CV taslağı üretme
-
-3. **İlan Yönetimi ve Eşleşme Motoru**
-   - Yeni ilan açma
-   - Aday-iş uygunluk skorunu yetkinlik + deneyim bazında hesaplama
-
-4. **İşe Alım Pipeline Takibi**
-   - Başvuru → Ön Görüşme → Teknik Mülakat → Teklif → İşe Alındı
-   - Adayı tek tuşla bir sonraki aşamaya taşıma
+- **Aday yönetimi API'si**: Aday profilini (rol, deneyim, teknik/sosyal yetkinlik) kaydeder.
+- **CV üretim API'si**: Seçilen aday için CV taslağı üretir.
+- **İlan yönetimi API'si**: İş ilanı açar.
+- **Eşleşme API'si**: Teknik (%60) + sosyal (%20) + deneyim (%20) ile uyum skoru hesaplar.
+- **Pipeline API'si**: Adayı Başvuru → Ön Görüşme → Teknik Mülakat → Teklif → İşe Alındı aşamalarında ilerletir.
+- **Frontend arayüzü**: Tüm işlemleri backend API üzerinden kullanır.
 
 ## Çalıştırma
 
-Herhangi bir build adımı gerektirmez.
-
 ```bash
-python3 -m http.server 4173
+node server.js
 ```
 
-Sonra tarayıcıdan:
+Tarayıcı:
 
 ```text
 http://localhost:4173
 ```
 
-## Dosya Yapısı
+## API Uç Noktaları
 
-- `index.html`: Arayüz yapısı
-- `styles.css`: Görsel tasarım
-- `app.js`: Uygulama mantığı (formlar, eşleşme, pipeline)
+- `GET /api/health`
+- `GET /api/state`
+- `POST /api/candidates`
+- `POST /api/jobs`
+- `POST /api/cv/generate`
+- `POST /api/match`
+- `POST /api/pipeline/move`
+
+## Dosyalar
+
+- `server.js`: Node.js backend (ek bağımlılık yok, in-memory veri)
+- `index.html`: Uygulama arayüzü
+- `styles.css`: Stil dosyası
+- `app.js`: Frontend logic (API çağrıları, render, form yönetimi)
